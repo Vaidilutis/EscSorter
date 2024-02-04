@@ -8,8 +8,7 @@
     
     
     <!--dom to img script-->
-   
-    <script type="text/javascript">
+       <script type="text/javascript">
         <!--
        
         var namMember = new Array(
@@ -34,8 +33,20 @@
         "Raiven - Veronika",
         "Nebulossa - Zorra",
         "Sarah Bonnicci - Loop",
-        "Jeryy Heil & Alyona Alyon - Teresa & Maria",
+        "Jerry Heil & Alyona Alyona - Teresa & Maria",
         );
+        var namMemberEmbed = new Array(
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/7rEDP1lSoDQ?si=9ysOAf7oTp7QeaxW\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/4mYFGxKDT1w?si=4yuP6sPxv0XKnix8\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/bal8oESDH7s?si=cBJb2ZMgMeAP0rH5\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/eA2fKlT8Khw?si=ooEQS12NPHOsAyZ0&amp;start=57\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/fQYGitPEDho?si=LgPIz7DSrxu_fzY_\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/HV3sORfrREE?si=KSosDSSUTSzSgrqg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/uWcSsi7SliI?si=qFWZE0O58_1bQP2N\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/nbWCHAoxS_s?si=LCLPLDXF-f42VBIF\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/-IIxDNyIBdE?si=jxPmgmSSF7tUTqqO\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/k_8cNbF8FLI?si=607B6xoDWM2M35ug\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+        )
         //**********************************************************/
         
         var lstMember = new Array();
@@ -238,6 +249,9 @@
             document.getElementById("battleNumber").innerHTML = str0;
             document.getElementById("leftField").innerHTML = str1;
             document.getElementById("rightField").innerHTML = str2;
+
+            document.getElementById("leftEmbed").innerHTML = namMemberEmbed[lstMember[cmp1][head1]];
+            document.getElementById("rightEmbed").innerHTML = namMemberEmbed[lstMember[cmp2][head2]];
         
             numQuestion++;
         }
@@ -275,11 +289,23 @@
         <tr>
             <td id="leftField" onclick="if(finishFlag==0)sortList(-1);" rowspan="2" style="text-align:center;"></td>
     
-            <td id="rightField" onclick="if(finishFlag==0)sortList(1);" rowspan="2" style="text-align:center;"></td>
+            <td id="rightField" onclick="if(finishFlag==0)sortList(1);" rowspan="2" style="text-align:center;">
+            </td>
         </tr>
 
     </tbody></table><br><br>
-    
+    <table id="embedTable 4" align="center">
+        <tbody>
+            <tr>
+                <td id="leftEmbed">
+                    
+                </td>
+                <td id="rightEmbed">
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div id="dcList"></div>
     <br>
     <div id="resultField" style="text-align: center;">
