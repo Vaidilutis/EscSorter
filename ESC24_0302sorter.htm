@@ -1,0 +1,350 @@
+<html><head>
+    <meta charset="UTF-8">
+    <title>Eurovision 2024 Favorites Sorter</title>
+    <!--End Cookie Script-->
+    <style>li{font-size:10px}
+    h2{text-align: center;}</style>
+    
+    
+    
+    <!--dom to img script-->
+       <script type="text/javascript">
+        <!--
+       
+        var namMember = new Array(
+        "Albania",
+        "Czechia",
+        "France",
+        "Ireland",
+        "Norway",
+        "Luxembourg",
+        "Slovenia",
+        "Spain",
+        "Malta",
+        "Ukraine",
+        "Finland",
+        "Latvia",
+        "Italy",
+        "Germany",
+        "Lithuania",
+        "Moldova",
+        "Estonia",
+        "Denmark",
+        "Poland",
+        "Belgium",
+        "San Marino",
+        "Croatia",
+        "Switzerland",
+        "The Netherlands",
+        "Austria",
+        "United Kingdom"
+        );
+        var namMemberSongName = new Array(
+        "Besa Kokëdhima - Zemrën n'dorë",
+        "Aiko - Pedestal",
+        "Slimane - Mon amour",
+        "Bambie Thug - Doomsday Blue",
+        "Gåte - Ulveham",
+        "Tali - Fighter",
+        "Raiven - Veronika",
+        "Nebulossa - Zorra",
+        "Sarah Bonnicci - Loop",
+        "Jerry Heil & Alyona Alyona - Teresa & Maria",
+        "Windows95Man - No Rules",
+        "Dons - Hollow",
+        "Angelina Mango - La noia",
+        "Isaak - Always On The Run",
+        "Silvester Belt - Luktelk <3 <3 <3",
+        "Natalia Barbu - In the Middle",
+        "5miinust and Puuluup - (nendest) narkootikumidest ei tea me (küll) midagi",
+            "Saba - Sand",
+            "Luna - The Tower",
+            "Mustii - Before the Party's Over",
+            "Megara - 11:11",
+            "Baby Lasagna - Rim Tim Tagi Dim",
+            "Nemo - The Code",
+            "Joost - Europapa",
+            "Kaleen - We Will Rave",
+            "Olly - Dizzy"
+        );
+        var namMemberEmbed = new Array(
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/7rEDP1lSoDQ?si=9ysOAf7oTp7QeaxW\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/4mYFGxKDT1w?si=4yuP6sPxv0XKnix8\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/bal8oESDH7s?si=cBJb2ZMgMeAP0rH5\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/eA2fKlT8Khw?si=ooEQS12NPHOsAyZ0&amp;start=57\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/fQYGitPEDho?si=LgPIz7DSrxu_fzY_\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/HV3sORfrREE?si=KSosDSSUTSzSgrqg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/uWcSsi7SliI?si=qFWZE0O58_1bQP2N\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/nbWCHAoxS_s?si=LCLPLDXF-f42VBIF\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/-IIxDNyIBdE?si=jxPmgmSSF7tUTqqO\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "<iframe width=\"270\" height=\"150\" src=\"https://www.youtube.com/embed/k_8cNbF8FLI?si=607B6xoDWM2M35ug\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+        )
+        //**********************************************************/
+        
+        var lstMember = new Array();
+        var parent = new Array();
+        var equal = new Array();
+        var rec = new Array();
+        var cmp1,cmp2;
+        var head1,head2;
+        var nrec;
+        
+        var numQuestion;
+        var totalSize;
+        var finishSize;
+        var finishFlag;
+        
+
+        function initList(){
+            var n = 0;
+            var mid;
+            var i;
+        
+
+            lstMember[n] = new Array();
+            for (i=0; i<namMember.length; i++) {
+                lstMember[n][i] = i;
+            }
+            parent[n] = -1;
+            totalSize = 0;
+            n++;
+        
+            for (i=0; i<lstMember.length; i++) {
+
+                if(lstMember[i].length>=2) {
+                    mid = Math.ceil(lstMember[i].length/2);
+                    lstMember[n] = new Array();
+                    lstMember[n] = lstMember[i].slice(0,mid);
+                    totalSize += lstMember[n].length;
+                    parent[n] = i;
+                    n++;
+                    lstMember[n] = new Array();
+                    lstMember[n] = lstMember[i].slice(mid,lstMember[i].length);
+                    totalSize += lstMember[n].length;
+                    parent[n] = i;
+                    n++;
+                }
+            }
+        
+            for (i=0; i<namMember.length; i++) {
+                rec[i] = 0;
+            }
+            nrec = 0;
+        
+            for (i=0; i<=namMember.length; i++) {
+                equal[i] = -1;
+            }
+        
+            cmp1 = lstMember.length-2;
+            cmp2 = lstMember.length-1;
+            head1 = 0;
+            head2 = 0;
+            numQuestion = 1;
+            finishSize = 0;
+            finishFlag = 0;
+        }
+        
+        function sortList(flag){
+            var i;
+            var str;
+        
+            if (flag<0) {
+                rec[nrec] = lstMember[cmp1][head1];
+                head1++;
+                nrec++;
+                finishSize++;
+                while (equal[rec[nrec-1]]!=-1) {
+                    rec[nrec] = lstMember[cmp1][head1];
+                    head1++;
+                    nrec++;
+                    finishSize++;
+                }
+            }
+            else if (flag>0) {
+                rec[nrec] = lstMember[cmp2][head2];
+                head2++;
+                nrec++;
+                finishSize++;
+                while (equal[rec[nrec-1]]!=-1) {
+                    rec[nrec] = lstMember[cmp2][head2];
+                    head2++;
+                    nrec++;
+                    finishSize++;
+                }
+            }
+            else {
+                rec[nrec] = lstMember[cmp1][head1];
+                head1++;
+                nrec++;
+                finishSize++;
+                while (equal[rec[nrec-1]]!=-1) {
+                    rec[nrec] = lstMember[cmp1][head1];
+                    head1++;
+                    nrec++;
+                    finishSize++;
+                }
+                equal[rec[nrec-1]] = lstMember[cmp2][head2];
+                rec[nrec] = lstMember[cmp2][head2];
+                head2++;
+                nrec++;
+                finishSize++;
+                while (equal[rec[nrec-1]]!=-1) {
+                    rec[nrec] = lstMember[cmp2][head2];
+                    head2++;
+                    nrec++;
+                    finishSize++;
+                }
+            }
+        
+            if (head1<lstMember[cmp1].length && head2==lstMember[cmp2].length) {
+                while (head1<lstMember[cmp1].length){
+                    rec[nrec] = lstMember[cmp1][head1];
+                    head1++;
+                    nrec++;
+                    finishSize++;
+                }
+            }
+            else if (head1==lstMember[cmp1].length && head2<lstMember[cmp2].length) {
+                while (head2<lstMember[cmp2].length){
+                    rec[nrec] = lstMember[cmp2][head2];
+                    head2++;
+                    nrec++;
+                    finishSize++;
+                }
+            }
+        
+            if (head1==lstMember[cmp1].length && head2==lstMember[cmp2].length) {
+                for (i=0; i<lstMember[cmp1].length+lstMember[cmp2].length; i++) {
+                    lstMember[parent[cmp1]][i] = rec[i];
+                }
+                lstMember.pop();
+                lstMember.pop();
+                cmp1 = cmp1-2;
+                cmp2 = cmp2-2;
+                head1 = 0;
+                head2 = 0;
+        
+                if (head1==0 && head2==0) {
+                    for (i=0; i<namMember.length; i++) {
+                        rec[i] = 0;
+                    }
+                    nrec = 0;
+                }
+            }
+        
+            if (cmp1<0) {
+                str = "Battle No."+(numQuestion-1)+"<br>"+Math.floor(finishSize*100/totalSize)+"% sorted.";
+                document.getElementById("battleNumber").innerHTML = str;
+        
+                showResult();
+                finishFlag = 1;
+            }
+            else {
+                showImage();
+            }
+        }
+        
+        function showResult() {
+            var ranking = 1;
+            var sameRank = 1;
+            var str = "";
+            var i;
+            var dcString = "<p><b>Kodukas kopijuojamas į Unofficial Eurovision Song Contest serverį #ranking kanalą</b></p><br><p>!submit 2024 ";
+        
+            str += "<table style=\"width:200px; font-size:12px; line-height:120%; margin-left:auto; margin-right:auto; border:1px solid #000; border-collapse:collapse\" align=\"center\">";
+            str += "<tr><td style=\"color:#ffffff; background-color:#000; text-align:center;\">Nr<\/td><td style=\"color:#ffffff; background-color:#000; text-align:center;\">Daina<\/td><\/tr>";
+        
+            for (i=0; i<namMember.length; i++) {
+                dcString += namMember[lstMember[0][i]] + " ";
+                str += "<tr><td style=\"border:1px solid #000; text-align:right; padding-right:5px;\">"+ranking+"<\/td><td style=\"border:1px solid #000; padding-left:5px;\">"+namMember[lstMember[0][i]] + " - " + namMemberSongName[lstMember[0][i]]+"<\/td><\/tr>";
+                if (i<namMember.length-1) {
+                    if (equal[lstMember[0][i]]==lstMember[0][i+1]) {
+                        sameRank++;
+                    } else {
+                        ranking += sameRank;
+                        sameRank = 1;
+                    }
+                }
+            }
+            str += "<\/table>";
+            dcString += "<\/p>";
+        
+            document.getElementById("resultField").innerHTML = str;
+            document.getElementById("dcList").innerHTML = dcString;
+        }
+        
+        function showImage() {
+            var str0 = "Battle No."+numQuestion+"<br>"+Math.floor(finishSize*100/totalSize)+"% sorted.";
+            var str1 = ""+toNameFace(lstMember[cmp1][head1]) + "<br><b>" + namMemberSongName[lstMember[cmp1][head1]];
+            var str2 = ""+toNameFace(lstMember[cmp2][head2]) + "<br><b>" + namMemberSongName[lstMember[cmp2][head2]];
+        
+            document.getElementById("battleNumber").innerHTML = str0;
+            document.getElementById("leftField").innerHTML = str1;
+            document.getElementById("rightField").innerHTML = str2;
+
+            // document.getElementById("leftEmbed").innerHTML = namMemberEmbed[lstMember[cmp1][head1]];
+            // document.getElementById("rightEmbed").innerHTML = namMemberEmbed[lstMember[cmp2][head2]];
+        
+            numQuestion++;
+        }
+        
+        function toNameFace(n){
+            var str = namMember[n];
+            return str;
+        ;}
+        </script>
+      
+    <script>function screencap(){var node=document.getElementById('resultField');domtoimage.toPng(node).then(function(dataUrl){var img=new Image();img.src=dataUrl;let showme=window.open('about:blank');setTimeout(function(){showme.document.write(img.outerHTML);},0);}).catch(function(error){console.error('oops, something went wrong!',error);});}</script>
+      
+    <!-- end dom to image code-->
+    
+    <style type="text/css">p{font-size:12px;font-family:sans-serif;text-align:center}#discordlist{font-size:10px;font-family:sans-serif;text-align:center}body{background-color:#1d192a;color:#fff}#mainTable{font-size:12px;font-family:sans-serif;text-align:center;vertical-align:middle;width:410px;margin-left:auto;margin-right:auto;border-collapse:separate;border-spacing:10px 5px}#resultField,#semi1ResultField,#semi2ResultField{font-size:12px;font-family:sans-serif;text-align:center}#leftField{width:200px;height:150px;border:1px solid #fff}#rightField{width:200px;height:150px;border:1px solid #fff}.middleField{width:120px;height:70px;border:1px solid #fff}
+
+    A{text-decoration:none}a:hover{color:#9cf}</style>
+    <meta http-equiv="x-dns-prefetch-control" content="off">
+    
+    </head>
+    
+    <body text="#000000" background-color="#ffffff" link="#0099ff" vlink="#0099ff" alink="#0099ff">
+    <!-- <center><img src="escheader2022.png"></center> -->
+    <table id="mainTable" align="center">
+        <tbody>
+        <tr>
+          
+    <h2>ESC 2024</h2>
+    <p>Pasitikrinkit savo skonį!</p></td>
+        </tr>
+        <tr>
+    
+            <td id="battleNumber" colspan="3" style="padding-bottom: 10px;">Battle No.146<br>100% sorted.</td>
+        </tr>
+        <tr>
+            <td id="leftField" onclick="if(finishFlag==0)sortList(-1);" rowspan="2" style="text-align:center;"></td>
+    
+            <td id="rightField" onclick="if(finishFlag==0)sortList(1);" rowspan="2" style="text-align:center;">
+            </td>
+        </tr>
+
+    </tbody></table><br><br>
+    <table id="embedTable 4" align="center">
+        <tbody>
+            <tr>
+                <td id="leftEmbed">
+                    
+                </td>
+                <td id="rightEmbed">
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="dcList"></div>
+    <br>
+    <div id="resultField" style="text-align: center;">
+        <br><br>
+        </div>
+    
+    <script type="text/javascript">initList();showImage();</script>
+    
+    </body>
+    </html>
